@@ -16,11 +16,11 @@ returns table (
   fat numeric,
   carbs numeric,
   calories numeric,
-  is_verified boolean,
-  is_global boolean,
+  isVerified boolean,
+  isGlobal boolean,
   provider text,
-  image_storage_path text,
-  translation_name text
+  imageStoragePath text,
+  translationName text
 )
 language sql
 stable
@@ -34,11 +34,11 @@ as $$
     p.fat,
     p.carbs,
     p.calories,
-    p.is_verified,
-    p.is_global,
+    p.is_verified as "isVerified",
+    p.is_global as "isGlobal",
     p.provider,
-    p.image_storage_path,
-    t.name as translation_name
+    p.image_storage_path as "imageStoragePath",
+    t.name as "translationName"
   from public.products p
   left join public.product_translations t
     on t.product_id = p.id
